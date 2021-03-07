@@ -20,5 +20,5 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: jiro4989/setup-nim-action@v1
-      - run: nimble build -Y
+      - run: nimble cpp --cpu:arm --os:linux src/soup_machine.nim --verbose
       - run: nimble test -Y
