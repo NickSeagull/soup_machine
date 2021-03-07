@@ -7,7 +7,8 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
-    if: "startsWith(github.event.head_commit.message, 'fix') || startsWith(github.event.head_commit.message, 'feat') || startsWith(github.event.head_commit.message, 'BREAKING')"
+    # if: "startsWith(github.event.head_commit.message, 'fix') || startsWith(github.event.head_commit.message, 'feat') || startsWith(github.event.head_commit.message, 'BREAKING')"
+    if: "false"
     env:
       commit_msg: ${{ github.event.head_commit.message }}
     steps:
