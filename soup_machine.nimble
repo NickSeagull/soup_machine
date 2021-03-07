@@ -12,3 +12,4 @@ bin           = @["soup_machine"]
 # Dependencies
 
 requires "nim >= 1.4.4"
+requires "nimline >= 0.1.7"
