@@ -1,0 +1,136 @@
+name: release
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release-fix:
+    runs-on: ubuntu-latest
+    if: "startsWith(github.event.head_commit.message, 'fix')"
+    env:
+      commit_msg: ${{ github.event.head_commit.message }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: jiro4989/setup-nim-action@v1
+      - run: nimble build -Y
+      - run: nimble test -Y
+      - run: nimble install -Y bump
+      - run: git config user.email "action@github.com"
+      - run: git config user.name "GITHUBACTION"
+      - run: bump $commit_msg
+      - name: Set tag
+        run: echo "::set-output name=git-tag-latest::$(git describe --tags)"
+        id: set_tag
+      - name: Create Draft Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        with:
+          tag_name: ${{ steps.set_tag.outputs.git-tag-latest }}
+          release_name: ${{ github.event.head_commit.message }}
+          draft: true
+          prerelease: false
+
+      - uses: actions/upload-release-asset@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./soup_machine
+          asset_name: soup_machine
+          asset_content_type: application/octet-stream
+
+      - uses: eregon/publish-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        with:
+          release_id: ${{ steps.create_release.outputs.id }}
+
+  release-feat:
+    runs-on: ubuntu-latest
+    if: "startsWith(github.event.head_commit.message, 'feat')"
+    env:
+      commit_msg: ${{ github.event.head_commit.message }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: jiro4989/setup-nim-action@v1
+      - run: nimble build -Y
+      - run: nimble test -Y
+      - run: nimble install -Y bump
+      - run: git config user.email "action@github.com"
+      - run: git config user.name "GITHUBACTION"
+      - run: bump --minor $commit_msg
+      - name: Set tag
+        run: echo "::set-output name=git-tag-latest::$(git describe --tags)"
+        id: set_tag
+      - name: Create Draft Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        with:
+          tag_name: ${{ steps.set_tag.outputs.git-tag-latest }}
+          release_name: ${{ github.event.head_commit.message }}
+          draft: true
+          prerelease: false
+
+      - uses: actions/upload-release-asset@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./soup_machine
+          asset_name: soup_machine
+          asset_content_type: application/octet-stream
+
+      - uses: eregon/publish-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        with:
+          release_id: ${{ steps.create_release.outputs.id }}
+
+
+  release-breaking:
+    runs-on: ubuntu-latest
+    if: "startsWith(github.event.head_commit.message, 'BREAKING')"
+    env:
+      commit_msg: ${{ github.event.head_commit.message }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: jiro4989/setup-nim-action@v1
+      - run: nimble build -Y
+      - run: nimble test -Y
+      - run: nimble install -Y bump
+      - run: git config user.email "action@github.com"
+      - run: git config user.name "GITHUBACTION"
+      - run: bump --major $commit_msg
+      - name: Set tag
+        run: echo "::set-output name=git-tag-latest::$(git describe --tags)"
+        id: set_tag
+      - name: Create Draft Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        with:
+          tag_name: ${{ steps.set_tag.outputs.git-tag-latest }}
+          release_name: ${{ github.event.head_commit.message }}
+          draft: true
+          prerelease: false
+
+      - uses: actions/upload-release-asset@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./soup_machine
+          asset_name: soup_machine
+          asset_content_type: application/octet-stream
+
+      - uses: eregon/publish-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        with:
+          release_id: ${{ steps.create_release.outputs.id }}
