@@ -1,4 +1,5 @@
 import ./cabl
+from strformat import fmt
 
 proc initDevice*(): void =
   echo "Init Device"
@@ -13,7 +14,10 @@ proc buttonChanged*(device: DevicePtr, button: DeviceButton, state: bool, shift:
                                   else: black)
 
 proc encoderChanged*(device: DevicePtr, encoder: int, increased: bool, shift: bool): void =
-  echo "Encoder changed"
+  # let incMsg = if increased: "increased" else: "decreased"
+  let black = newColor(0)
+  device.graphicDisplay(0).black()
+  device.graphicDisplay(0).c_putText(10, 10, "lol".cstring, black)
 
 proc keyChanged*(device: DevicePtr, index: int, value: float64, shift: bool): void =
   device.setKeyLed(index, int(value * 0xff))
