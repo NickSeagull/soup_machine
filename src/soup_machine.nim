@@ -43,10 +43,6 @@ type DeviceTest* {.importcpp: "sl::DeviceTest".} = object
 proc newDeviceTest*: ptr DeviceTest {.importcpp: "new sl::DeviceTest".}
 proc thisThreadYield*: void {.importcpp: "std::this_thread::yield()".}
 
-type DeviceButton* {.importcpp: "sl::Device::Button".} = object
-type DevicePtr* {.importcpp: "sl::Coordinator::tDevicePtr".} = object
-
-proc setKeyLed(this: DevicePtr, index: uint, value: uint8): cint {.importcpp: "#->setKeyLed(@)".}
 
 ############################################################
 #                                                          #
@@ -60,19 +56,16 @@ proc nimRender(): cint {.exportc.} =
   echo "Render"
 
 
-proc nimButtonChanged(button: DeviceButton, buttonState: bool, shiftState: bool): cint {.exportc.} =
+proc nimButtonChanged(device: DevicePtr, button: DeviceButton, buttonState: bool, shiftState: bool): cint {.exportc.} =
   echo "Button Changed"
 
-proc nimEncoderChanged(encoder: cint, valueIncreased: bool, shiftPressed: bool): cint {.exportc.} =
+proc nimEncoderChanged(device: DevicePtr, encoder: cint, valueIncreased: bool, shiftPressed: bool): cint {.exportc.} =
   echo "encoder Changed"
 
-
 proc nimKeyChanged(device: DevicePtr, index: uint, value: cdouble, shiftPressed: bool): void {.exportc.} =
-  # FIXME: Index not passed correctly, changes from n to n-1
-  echo(fmt"key Changed {$index} || {$value}")
   discard device.setKeyLed(index, uint8(value * 0xff))
 
-proc nimControlChanged(pot: cint, value: cdouble, shiftPressed: bool): cint {.exportc.} =
+proc nimControlChanged(device: DevicePtr, pot: cint, value: cdouble, shiftPressed: bool): cint {.exportc.} =
   echo "control Changed"
 
 ############################################################
@@ -85,13 +78,13 @@ void sl::DeviceTest::initDevice() { ::nimInitDevice(); }
 
 void sl::DeviceTest::render() { ::nimRender(); }
 
-void sl::DeviceTest::buttonChanged(Device::Button button_, bool buttonState_, bool shiftState_) { ::nimButtonChanged(button_, buttonState_, shiftState_); }
+void sl::DeviceTest::buttonChanged(Device::Button button_, bool buttonState_, bool shiftState_) { ::nimButtonChanged(device(), button_, buttonState_, shiftState_); }
 
-void sl::DeviceTest::encoderChanged(unsigned encoder_, bool valueIncreased_, bool shiftPressed_) { ::nimEncoderChanged(encoder_, valueIncreased_, shiftPressed_); }
+void sl::DeviceTest::encoderChanged(unsigned encoder_, bool valueIncreased_, bool shiftPressed_) { ::nimEncoderChanged(device(), encoder_, valueIncreased_, shiftPressed_); }
 
 void sl::DeviceTest::keyChanged(unsigned index_, double value_, bool shiftPressed_) { ::nimKeyChanged(device(), index_, value_, shiftPressed_); }
 
-void sl::DeviceTest::controlChanged(unsigned pot_, double value_, bool shiftPressed_) { ::nimControlChanged(pot_, value_, shiftPressed_); }
+void sl::DeviceTest::controlChanged(unsigned pot_, double value_, bool shiftPressed_) { ::nimControlChanged(device(), pot_, value_, shiftPressed_); }
 """.}
 
 ############################################################
