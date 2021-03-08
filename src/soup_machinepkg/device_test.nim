@@ -7,7 +7,10 @@ proc render*(): void =
   echo "Render"
 
 proc buttonChanged*(device: DevicePtr, button: DeviceButton, state: bool, shift: bool): void =
-  echo "Button changed"
+  let white = newColor(255)
+  let black = newColor(0)
+  device.setButtonLed(button, if state: white
+                                  else: black)
 
 proc encoderChanged*(device: DevicePtr, encoder: int, increased: bool, shift: bool): void =
   echo "Encoder changed"
