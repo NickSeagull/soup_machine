@@ -1,4 +1,5 @@
-from strformat import fmt
+import ./soup_machinepkg/device_test as dt
+import ./soup_machinepkg/cabl
 
 ############################################################
 #                                                          #
@@ -50,23 +51,22 @@ proc thisThreadYield*: void {.importcpp: "std::this_thread::yield()".}
 #                                                          #
 ############################################################
 proc nimInitDevice(): cint {.exportc.} =
-  echo "Init Device"
+  dt.initDevice()
 
 proc nimRender(): cint {.exportc.} =
-  echo "Render"
-
+  dt.render()
 
 proc nimButtonChanged(device: DevicePtr, button: DeviceButton, buttonState: bool, shiftState: bool): cint {.exportc.} =
-  echo "Button Changed"
+  dt.buttonChanged(device, button, buttonState, shiftState)
 
 proc nimEncoderChanged(device: DevicePtr, encoder: cint, valueIncreased: bool, shiftPressed: bool): cint {.exportc.} =
-  echo "encoder Changed"
+  dt.encoderChanged(device, encoder.int, valueIncreased, shiftPressed)
 
 proc nimKeyChanged(device: DevicePtr, index: uint, value: cdouble, shiftPressed: bool): void {.exportc.} =
-  discard device.setKeyLed(index, uint8(value * 0xff))
+  dt.keyChanged(device, index.int, value.float64, shiftPressed)
 
 proc nimControlChanged(device: DevicePtr, pot: cint, value: cdouble, shiftPressed: bool): cint {.exportc.} =
-  echo "control Changed"
+  dt.controlChanged(device, pot.int, value.float64, shiftPressed)
 
 ############################################################
 #                                                          #

@@ -1,7 +1,6 @@
-const cabl = "cabl/cabl.h"
+const cabl_h = "<cabl/cabl.h>"
 
-type DeviceButton* {.header: cabl,
-  importcpp: "sl::Device::Button".} = object
+type DeviceButton* {.header: cabl_h, importcpp: "sl::cabl::Device::Button".} = object
 
 
 ############################################################
@@ -9,7 +8,8 @@ type DeviceButton* {.header: cabl,
 # Device operations                                        #
 #                                                          #
 ############################################################
-type DevicePtr* {.importcpp: "sl::Coordinator::tDevicePtr".} = object
+type DevicePtr* {.header: cabl_h, importcpp: "sl::cabl::Coordinator::tDevicePtr".} = object
+
 
 proc c_setKeyLed(this: DevicePtr, index: uint, value: uint8): cint {.importcpp: "#->setKeyLed(@)".}
 

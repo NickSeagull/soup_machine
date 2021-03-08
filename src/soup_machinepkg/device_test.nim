@@ -13,7 +13,7 @@ proc encoderChanged*(device: DevicePtr, encoder: int, increased: bool, shift: bo
   echo "Encoder changed"
 
 proc keyChanged*(device: DevicePtr, index: int, value: float64, shift: bool): void =
-  echo "Key changed"
+  device.setKeyLed(index, int(value * 0xff))
 
-proc controlChanged*(device: DevicePtr, index: int, value: float64, shift: bool): void =
+proc controlChanged*(device: DevicePtr, pot: int, value: float64, shift: bool): void =
   echo "Control changed"
