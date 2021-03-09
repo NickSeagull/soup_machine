@@ -94,6 +94,5 @@ void sl::DeviceTest::controlChanged(unsigned pot_, double value_, bool shiftPres
 ############################################################
 when isMainModule:
   let _: ptr DeviceTest = newDeviceTest()
-  echo("Type q then enter to quit")
-  while stdin.readLine != "q":
+  while true:
     thisThreadYield()

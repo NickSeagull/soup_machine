@@ -21,7 +21,7 @@ type TextDisplayObj* {.header: cabl_h, importcpp: "sl::cabl::TextDisplay".} = ob
 
 type TextDisplay* = ptr TextDisplayObj
 
-proc c_putText*(this: TextDisplay, str: cstring, row: uint): void {.importcpp: "#->putText(@)".}
+proc c_putText(this: TextDisplay, str: cstring, row: uint): void {.importcpp: "#->putText(@)".}
 
 proc putText*(this: TextDisplay, str: string, row: int): void =
   c_putText(this, str.cstring, row.uint)
@@ -34,7 +34,11 @@ type Canvas* = ptr CanvasObj
 
 
 proc black*(this: Canvas): void {.importcpp: "#->black()".}
-proc c_putText*(this: Canvas, x: uint, y: uint, str: cstring, color: Color): void {.importcpp: "#->putText(@)".}
+proc c_putText(this: Canvas, x: uint, y: uint, str: cstring, color: Color): void {.importcpp: "#->putText(@)".}
+
+proc putText*(this: Canvas, x: int, y:int, str: string, color: Color): void =
+  c_putText(this, x.uint, y.uint, str.cstring, color)
+
 
 # DevicePtr
 type DevicePtr* {.header: cabl_h, importcpp: "sl::cabl::Coordinator::tDevicePtr".} = object
