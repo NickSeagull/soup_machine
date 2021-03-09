@@ -15,3 +15,7 @@ similar to OP-1 from Teenage Engineering
 ## 4. External sources
 ## 5. Song rendering
 ## 6. Connectivity
+
+# TODO
+
+- [] Create suppressions file for what's not my code
