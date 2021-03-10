@@ -2,3 +2,4 @@ nimcache/
 nimblecache/
 htmldocs/
 soup_machine
+valgrind/log.txt
