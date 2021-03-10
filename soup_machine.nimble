@@ -12,6 +12,10 @@ bin           = @["soup_machine"]
 # Dependencies
 
 requires "nim >= 1.4.4"
+requires "patty >= 0.3.4"
+
+
+# Tasks
 
 task memcheck, "Memory check with Valgrind":
   exec "sudo valgrind --tool=memcheck --leak-check=yes --show-reachable=yes --num-callers=20 --track-fds=yes --track-origins=yes --suppressions=valgrind/minimal.supp --gen-suppressions=all --log-file=valgrind/log.txt ./soup_machine"

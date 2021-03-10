@@ -88,6 +88,10 @@ which acts as the computer for the software DAW.
 # Road map
 
 - [x] Use Cabl from Nim
+- [ ] Elm-ish API
+  - [ ] Controls create events
+  - [ ] Declarative view
+  - [ ] Cmd-style actions like sound and lights
 - [ ] Musical keyboard with pads
 - [ ] Drum sampler
 

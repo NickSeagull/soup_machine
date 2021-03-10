@@ -59,8 +59,8 @@ proc thisThreadYield*: void {.importcpp: "std::this_thread::yield()".}
 #  Nim callbacks that cast C types                         #
 #                                                          #
 ############################################################
-proc nimInitDevice(): cint {.exportc.} =
-  dt.initDevice()
+proc nimInitDevice(device: DevicePtr): cint {.exportc.} =
+  dt.initDevice(device)
 
 proc nimRender(): cint {.exportc.} =
   dt.render()
@@ -83,7 +83,7 @@ proc nimControlChanged(device: DevicePtr, pot: cint, value: cdouble, shiftPresse
 #                                                          #
 ############################################################
 {.emit: """
-void sl::DeviceTest::initDevice() { ::nimInitDevice(); }
+void sl::DeviceTest::initDevice() { ::nimInitDevice(device()); }
 
 void sl::DeviceTest::render() { ::nimRender(); }
 
