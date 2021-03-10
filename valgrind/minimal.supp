@@ -1,0 +1,673 @@
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Param
+   write(count)
+   fun:__libc_write
+   fun:write
+   fun:_IO_file_write@@GLIBC_2.4
+   fun:new_do_write
+   fun:_IO_new_do_write
+   fun:_IO_do_write@@GLIBC_2.4
+   fun:_IO_file_overflow@@GLIBC_2.4
+   fun:putc
+   fun:_ZNSo3putEc
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   obj:*
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Value4
+   obj:/usr/lib/arm-linux-gnueabihf/libarmmem-v7l.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Value4
+   fun:_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE13_M_set_lengthEj
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Value4
+   fun:__vsprintf_chk
+   fun:__sprintf_chk
+   obj:/usr/lib/arm-linux-gnueabihf/libudev.so.1.6.13
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   fun:is_overlap
+   fun:is_overlap
+   fun:stpcpy
+   obj:/usr/lib/arm-linux-gnueabihf/libudev.so.1.6.13
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Value4
+   fun:stpcpy
+   obj:/usr/lib/arm-linux-gnueabihf/libudev.so.1.6.13
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   fun:udev_monitor_new_from_netlink
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Value4
+   fun:_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE12_M_constructIPKcEEvT_S8_St20forward_iterator_tag
+   fun:_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC1EPKcRKS3_
+   fun:_ZN12_GLOBAL__N_116stringDescriptorEP20libusb_device_handleh
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Value4
+   fun:_IO_file_overflow@@GLIBC_2.4
+   fun:putc
+   fun:_ZNSo3putEc
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   fun:_IO_file_overflow@@GLIBC_2.4
+   fun:putc
+   fun:_ZNSo3putEc
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:calloc
+   fun:allocate_dtv
+   fun:_dl_allocate_tls
+   fun:allocate_stack
+   fun:pthread_create@@GLIBC_2.4
+   fun:_ZNSt6thread15_M_start_threadESt10unique_ptrINS_6_StateESt14default_deleteIS1_EEPFvvE
+   fun:_ZNSt6threadC1IZN2sl4cabl12DriverLibUSBC4EvEUlvE_JEvEEOT_DpOT0_
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   obj:/usr/lib/arm-linux-gnueabihf/librtmidi.so.4.0.0
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   fun:mempcpy
+   fun:_IO_new_file_xsputn
+   fun:_IO_file_xsputn@@GLIBC_2.4
+   fun:fwrite
+   fun:_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_i
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   fun:_IO_default_xsputn
+   fun:vfprintf
+   fun:__vsprintf_chk
+   fun:__sprintf_chk
+   obj:/usr/lib/arm-linux-gnueabihf/libudev.so.1.6.13
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:calloc
+   obj:/usr/lib/arm-linux-gnueabihf/libudev.so.1.6.13
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   fun:putc
+   fun:_ZNSo3putEc
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:malloc
+   fun:strdup
+   obj:/usr/lib/arm-linux-gnueabihf/libasound.so.2.0.0
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Value4
+   fun:_IO_default_xsputn
+   fun:_IO_default_xsputn
+   fun:vfprintf
+   fun:__vsprintf_chk
+   fun:__sprintf_chk
+   obj:/usr/lib/arm-linux-gnueabihf/libudev.so.1.6.13
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   fun:_IO_default_xsputn
+   fun:_IO_default_xsputn
+   fun:vfprintf
+   fun:__vsprintf_chk
+   fun:__sprintf_chk
+   obj:/usr/lib/arm-linux-gnueabihf/libudev.so.1.6.13
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:calloc
+   obj:/usr/lib/arm-linux-gnueabihf/libasound.so.2.0.0
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   fun:vfprintf
+   fun:__vsprintf_chk
+   fun:__sprintf_chk
+   obj:/usr/lib/arm-linux-gnueabihf/libudev.so.1.6.13
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:calloc
+   fun:snd_config_update_r
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Value4
+   obj:/usr/lib/arm-linux-gnueabihf/libarmmem-v7l.so
+   obj:/usr/lib/arm-linux-gnueabihf/libasound.so.2.0.0
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:_Znwj
+   fun:_ZNSt6thread13_S_make_stateINS_8_InvokerISt5tupleIJZN2sl4cabl11Coordinator3runEvEUlvE_EEEEEESt10unique_ptrINS_6_StateESt14default_deleteISA_EEOT_
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   fun:is_overlap
+   fun:is_overlap
+   fun:mempcpy
+   fun:_IO_new_file_xsputn
+   fun:_IO_file_xsputn@@GLIBC_2.4
+   fun:fwrite
+   fun:_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_i
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:_Znwj
+   fun:_ZN9__gnu_cxx13new_allocatorIN2sl4cabl5ColorEE8allocateEjPKv
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:_Znwj
+   fun:_ZNSt14_Function_base13_Base_managerISt5_BindIFMN2sl4cabl6ClientEFvSt6vectorINS3_16DeviceDescriptorESaIS6_EEEPS4_St12_PlaceholderILi1EEEEE8_M_cloneERSt9_Any_dataRKSH_St17integral_constantIbLb0EE
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Value4
+   fun:strlen
+   fun:vfprintf
+   fun:__vsprintf_chk
+   fun:__sprintf_chk
+   obj:/usr/lib/arm-linux-gnueabihf/libudev.so.1.6.13
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Value4
+   fun:memcpy
+   obj:/usr/lib/arm-linux-gnueabihf/libudev.so.1.6.13
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   fun:_IO_new_file_xsputn
+   fun:_IO_file_xsputn@@GLIBC_2.4
+   fun:fwrite
+   fun:_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_i
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   fun:strdup
+   fun:snd_user_file
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:malloc
+   fun:realloc
+   obj:/usr/lib/arm-linux-gnueabihf/libusb-1.0.so.0.1.0
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   fun:_IO_do_write@@GLIBC_2.4
+   fun:_IO_file_overflow@@GLIBC_2.4
+   fun:putc
+   fun:_ZNSo3putEc
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:_Znwj
+   fun:_ZN9__gnu_cxx13new_allocatorIhE8allocateEjPKv
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:_Znwj
+   fun:_ZN2sl4cabl6DriverC1ENS1_4TypeE
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   fun:malloc
+   fun:strdup
+   obj:/usr/lib/arm-linux-gnueabihf/libudev.so.1.6.13
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   fun:_ZN2sl4cabl12DriverLibUSB9enumerateEv
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:calloc
+   fun:__new_exitfn
+   fun:__internal_atexit
+   fun:_Z41__static_initialization_and_destruction_0ii
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   fun:_IO_file_xsputn@@GLIBC_2.4
+   fun:fwrite
+   fun:_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_i
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:_Znwj
+   fun:_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE12_M_constructIPKcEEvT_S8_St20forward_iterator_tag
+   fun:_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC1EPKcRKS3_
+   fun:_Z41__static_initialization_and_destruction_0ii
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:malloc
+   obj:/usr/lib/arm-linux-gnueabihf/libasound.so.2.0.0
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   fun:fwrite
+   fun:_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_i
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   fun:is_overlap
+   fun:memcpy
+   obj:/usr/lib/arm-linux-gnueabihf/libudev.so.1.6.13
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:malloc
+   fun:strdup
+   obj:/usr/lib/arm-linux-gnueabihf/libusb-1.0.so.0.1.0
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:calloc
+   obj:/usr/lib/arm-linux-gnueabihf/libusb-1.0.so.0.1.0
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   fun:_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE13_S_copy_charsEPcS5_S5_
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:_Znwj
+   fun:_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE12_M_constructIPcEEvT_S7_St20forward_iterator_tag
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Value4
+   fun:strlen
+   fun:strdup
+   obj:/usr/lib/arm-linux-gnueabihf/libudev.so.1.6.13
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   fun:mempcpy
+   fun:_IO_default_xsputn
+   fun:_IO_default_xsputn
+   fun:vfprintf
+   fun:__vsprintf_chk
+   fun:__sprintf_chk
+   obj:/usr/lib/arm-linux-gnueabihf/libudev.so.1.6.13
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:calloc
+   obj:/usr/lib/arm-linux-gnueabihf/libasound.so.2.0.0
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:_Znwj
+   fun:_ZN9__gnu_cxx13new_allocatorISt23_Sp_counted_ptr_inplaceIN2sl4cabl6DriverESaIS4_ELNS_12_Lock_policyE1EEE8allocateEjPKv
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   fun:strdup
+   fun:udev_monitor_filter_add_match_subsystem_devtype
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr8
+   obj:/usr/lib/arm-linux-gnueabihf/libarmmem-v7l.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   fun:stpcpy
+   obj:/usr/lib/arm-linux-gnueabihf/libudev.so.1.6.13
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:_Znwj
+   fun:_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKN2sl4cabl16DeviceDescriptorESt8functionIFSt10shared_ptrINS4_6DeviceEEvEEEEE8allocateEjPKv
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:calloc
+   fun:allocate_dtv
+   fun:_dl_allocate_tls
+   fun:allocate_stack
+   fun:pthread_create@@GLIBC_2.4
+   fun:_ZNSt6thread15_M_start_threadESt10unique_ptrINS_6_StateESt14default_deleteIS1_EEPFvvE
+   fun:_ZNSt6threadC1IZN2sl4cabl11Coordinator3runEvEUlvE_JEvEEOT_DpOT0_
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   fun:_IO_file_write@@GLIBC_2.4
+   fun:new_do_write
+   fun:_IO_new_do_write
+   fun:_IO_do_write@@GLIBC_2.4
+   fun:_IO_file_overflow@@GLIBC_2.4
+   fun:putc
+   fun:_ZNSo3putEc
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:_Znwj
+   fun:_ZNSt6thread13_S_make_stateINS_8_InvokerISt5tupleIJZN2sl4cabl12DriverLibUSBC4EvEUlvE_EEEEEESt10unique_ptrINS_6_StateESt14default_deleteISA_EEOT_
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   fun:is_overlap
+   fun:is_overlap
+   fun:mempcpy
+   fun:_IO_default_xsputn
+   fun:_IO_default_xsputn
+   fun:vfprintf
+   fun:__vsprintf_chk
+   fun:__sprintf_chk
+   obj:/usr/lib/arm-linux-gnueabihf/libudev.so.1.6.13
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   fun:is_overlap
+   fun:stpcpy
+   obj:/usr/lib/arm-linux-gnueabihf/libudev.so.1.6.13
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   fun:_Znwj
+   fun:_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE12_M_constructIPcEEvT_S7_St20forward_iterator_tag
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   fun:_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE12_M_constructIPcEEvT_S7_St20forward_iterator_tag
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Value4
+   fun:invalid_name
+   fun:opendir
+   obj:/usr/lib/arm-linux-gnueabihf/libudev.so.1.6.13
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   obj:/usr/lib/arm-linux-gnueabihf/libarmmem-v7l.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   fun:_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE12_M_constructIPKcEEvT_S8_St20forward_iterator_tag
+   fun:_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC1EPKcRKS3_
+   fun:_ZN12_GLOBAL__N_116stringDescriptorEP20libusb_device_handleh
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:malloc
+   obj:/usr/lib/arm-linux-gnueabihf/libusb-1.0.so.0.1.0
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   fun:udev_new
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Value4
+   fun:_IO_new_file_xsputn
+   fun:_IO_file_xsputn@@GLIBC_2.4
+   fun:fwrite
+   fun:_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_i
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:calloc
+   fun:allocate_dtv
+   fun:_dl_allocate_tls
+   fun:allocate_stack
+   fun:pthread_create@@GLIBC_2.4
+   obj:/usr/lib/arm-linux-gnueabihf/libusb-1.0.so.0.1.0
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:_Znwj
+   fun:_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKN2sl4cabl6Driver4TypeESt10shared_ptrIS5_EEEE8allocateEjPKv
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Value4
+   obj:/usr/lib/arm-linux-gnueabihf/libudev.so.1.6.13
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   fun:malloc
+   obj:/usr/lib/arm-linux-gnueabihf/libudev.so.1.6.13
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   fun:_Znwj
+   fun:_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE12_M_constructIPKcEEvT_S8_St20forward_iterator_tag
+   fun:_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC1EPKcRKS3_
+   fun:_ZN12_GLOBAL__N_116stringDescriptorEP20libusb_device_handleh
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   fun:_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_i
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:_Znwj
+   fun:_ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt8functionIFvSt6vectorIN2sl4cabl16DeviceDescriptorESaISE_EEEEEEE8allocateEjPKv
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Param
+   openat(filename)
+   fun:__open_nocancel
+   fun:opendir
+   obj:/usr/lib/arm-linux-gnueabihf/libudev.so.1.6.13
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   fun:is_overlap
+   fun:is_overlap
+   fun:memcpy
+   obj:/usr/lib/arm-linux-gnueabihf/libudev.so.1.6.13
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Value4
+   fun:mempcpy
+   fun:_IO_new_file_xsputn
+   fun:_IO_file_xsputn@@GLIBC_2.4
+   fun:fwrite
+   fun:_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_i
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:calloc
+   obj:/usr/lib/arm-linux-gnueabihf/libusb-1.0.so.0.1.0
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   fun:_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERjj
+   obj:*
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   obj:/usr/lib/arm-linux-gnueabihf/libudev.so.1.6.13
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Value4
+   obj:/usr/lib/arm-linux-gnueabihf/libasound.so.2.0.0
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:calloc
+   fun:libusb_init
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:calloc
+   fun:libusb_hotplug_register_callback
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Value4
+   fun:strcspn
+   obj:/usr/lib/arm-linux-gnueabihf/libudev.so.1.6.13
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Value4
+   fun:strspn
+   obj:/usr/lib/arm-linux-gnueabihf/libudev.so.1.6.13
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Value4
+   fun:dl_new_hash
+   fun:_dl_lookup_symbol_x
+   fun:do_sym
+   fun:_dl_sym
+   fun:dlsym_doit
+   fun:_dl_catch_exception
+   fun:_dl_catch_error
+   fun:_dlerror_run
+   fun:dlsym
+   obj:/usr/lib/arm-linux-gnueabihf/libasound.so.2.0.0
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Value4
+   fun:mempcpy
+   fun:_IO_default_xsputn
+   fun:_IO_default_xsputn
+   fun:vfprintf
+   fun:__vsprintf_chk
+   fun:__sprintf_chk
+   obj:/usr/lib/arm-linux-gnueabihf/libudev.so.1.6.13
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   fun:memcpy
+   obj:/usr/lib/arm-linux-gnueabihf/libudev.so.1.6.13
+}
