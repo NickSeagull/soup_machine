@@ -1,5 +1,97 @@
 {
    <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   fun:pthread_mutex_lock
+   obj:/usr/lib/arm-linux-gnueabihf/libusb-1.0.so.0.1.0
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   fun:__pthread_mutex_lock_full
+   obj:/usr/lib/arm-linux-gnueabihf/libusb-1.0.so.0.1.0
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   fun:__pthread_mutex_unlock_usercnt
+   obj:/usr/lib/arm-linux-gnueabihf/libusb-1.0.so.0.1.0
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   fun:__pthread_mutex_unlock_full
+   obj:/usr/lib/arm-linux-gnueabihf/libusb-1.0.so.0.1.0
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   fun:__pthread_mutex_unlock_usercnt
+   fun:libusb_unlock_events
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   fun:pthread_mutex_lock
+   fun:libusb_unlock_events
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   fun:__pthread_mutex_lock_full
+   fun:libusb_unlock_events
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   fun:pthread_cond_broadcast@@GLIBC_2.4
+   fun:libusb_unlock_events
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   fun:__pthread_mutex_unlock_full
+   fun:libusb_handle_events_timeout_completed
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   fun:libusb*
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:/usr/lib/arm-linux-gnueabihf/libusb-1.0.so.0.1.0
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   obj:/usr/lib/arm-linux-gnueabihf/libusb-1.0.so.0.1.0
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: indirect
+   fun:malloc
+   fun:strdup
+   obj:/usr/lib/arm-linux-gnueabihf/libusb-1.0.so.0.1.0
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: indirect
+   fun:malloc
+   fun:realloc
+   obj:/usr/lib/arm-linux-gnueabihf/libusb-1.0.so.0.1.0
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:calloc
+   obj:/usr/lib/arm-linux-gnueabihf/libusb-1.0.so.0.1.0
+}
+{
+   <insert_a_suppression_name_here>
    Memcheck:Param
    write(count)
    fun:__libc_write

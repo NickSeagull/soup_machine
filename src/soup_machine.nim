@@ -41,7 +41,6 @@ using namespace sl::cabl;
 #                                                          #
 ############################################################
 type DeviceTest* {.importcpp: "sl::DeviceTest".} = object
-proc newDeviceTest*: ptr DeviceTest {.importcpp: "new sl::DeviceTest".}
 proc thisThreadYield*: void {.importcpp: "std::this_thread::yield()".}
 
 
@@ -93,6 +92,6 @@ void sl::DeviceTest::controlChanged(unsigned pot_, double value_, bool shiftPres
 #                                                          #
 ############################################################
 when isMainModule:
-  let _: ptr DeviceTest = newDeviceTest()
+  {.emit: "sl::DeviceTest dt;".}
   while stdin.readLine() != "q":
     thisThreadYield()
