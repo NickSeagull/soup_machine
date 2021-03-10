@@ -1,8 +1,5 @@
 <div align="center">
-  <p style="font-size: 500%;">
-    Soup Machine
-    <img src="./assets/hot-soup.png" height="50px"></img>
-  </p>
+  <img src="./assets/banner.png"></img>
 </div>
 
 ---
