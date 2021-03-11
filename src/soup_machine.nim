@@ -8,8 +8,10 @@
 #                                                          #
 ############################################################
 
-import ./soup_machinepkg/device_test as dt
+# import ./soup_machinepkg/device_test as dt
 import ./soup_machinepkg/cabl
+import ./soup_machinepkg/elm/internal
+import ./soup_machinepkg/elm
 
 ############################################################
 #                                                          #
@@ -60,22 +62,22 @@ proc thisThreadYield*: void {.importcpp: "std::this_thread::yield()".}
 #                                                          #
 ############################################################
 proc nimInitDevice(device: DevicePtr): cint {.exportc.} =
-  dt.initDevice(device)
+  runApp(device)
 
 proc nimRender(): cint {.exportc.} =
-  dt.render()
+  discard  # This is not used in the maschine mk1
 
 proc nimButtonChanged(device: DevicePtr, button: DeviceButton, buttonState: bool, shiftState: bool): cint {.exportc.} =
-  dt.buttonChanged(device, button, buttonState, shiftState)
+  submitMessage(ButtonChanged(button, buttonState, shiftState))
 
 proc nimEncoderChanged(device: DevicePtr, encoder: cint, valueIncreased: bool, shiftPressed: bool): cint {.exportc.} =
-  dt.encoderChanged(device, encoder.int, valueIncreased, shiftPressed)
+  submitMessage(EncoderChanged(encoder, valueIncreased, shiftPressed))
 
 proc nimKeyChanged(device: DevicePtr, index: uint, value: cdouble, shiftPressed: bool): void {.exportc.} =
-  dt.keyChanged(device, index.int, value.float64, shiftPressed)
+  submitMessage(KeyChanged(index.int, value, shiftPressed))
 
 proc nimControlChanged(device: DevicePtr, pot: cint, value: cdouble, shiftPressed: bool): cint {.exportc.} =
-  dt.controlChanged(device, pot.int, value.float64, shiftPressed)
+  discard  # This is not used in the maschine mk1
 
 ############################################################
 #                                                          #

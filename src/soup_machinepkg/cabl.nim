@@ -39,6 +39,10 @@ proc c_putText(this: Canvas, x: uint, y: uint, str: cstring, color: Color): void
 proc putText*(this: Canvas, x: int, y:int, str: string, color: Color): void =
   c_putText(this, x.uint, y.uint, str.cstring, color)
 
+proc width*(this: Canvas): uint {.importcpp: "#->width()".}
+proc height*(this: Canvas): uint {.importcpp: "#->height()".}
+proc rectangle*(this: Canvas, x: uint, y: uint, w: uint, h: uint, color: Color): void {.importcpp: "#->rectangle(@)".}
+
 
 # DevicePtr
 type DevicePtr* {.header: cabl_h, importcpp: "sl::cabl::Coordinator::tDevicePtr".} = object
