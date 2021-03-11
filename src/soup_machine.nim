@@ -4,7 +4,7 @@
 #  with Cabl, the library for connecting to the Maschine   #
 #                                                          #
 #  For the implementation, you should probably start       #
-#  looking at soup_machinepkg/device_test.nim              #
+#  looking at soup_machinepkg/app.nim                      #
 #                                                          #
 ############################################################
 
