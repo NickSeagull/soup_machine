@@ -19,7 +19,8 @@ proc update*(message: Message, model: Model): (Model, Cmd) =
       newModel.counter += (encoder * increment * multiplier)
       (newModel, CmdNone())
     KeyChanged(index, value, _):
-      (model, SetKeyLed(index, value))
+      # (model, SetKeyLed(index, value))
+      (model, PlaySound())
     ButtonChanged(btn, on):
       (model, SetButtonLed(btn, on))
 

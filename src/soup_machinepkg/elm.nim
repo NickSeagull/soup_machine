@@ -9,6 +9,7 @@ variantp Message:
 variantp Cmd:
   SetButtonLed(sblButton: DeviceButton, on: bool)
   SetKeyLed(sklIndex: int, sklValue: float64)
+  PlaySound
   CmdNone
 
 variantp View:

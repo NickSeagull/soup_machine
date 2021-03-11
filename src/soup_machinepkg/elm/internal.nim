@@ -3,6 +3,7 @@ import patty
 import options
 import ../elm
 import ../app as app
+import ./cmd/play_sound
 
 
 # Thread globals
@@ -59,6 +60,8 @@ proc commandWorker() =
           d.setButtonLed(btn, if on: newColor(255) else: newColor(0))
         SetKeyLed(index, value):
           d.setKeyLed(index, int(value * 0xff))
+        PlaySound:
+          playSound()
         CmdNone:
           discard
 

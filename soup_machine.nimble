@@ -13,6 +13,7 @@ bin           = @["soup_machine"]
 
 requires "nim >= 1.4.4"
 requires "patty >= 0.3.4"
+requires "sdl2 >= 2.0.3"
 
 
 # Tasks
