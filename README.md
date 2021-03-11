@@ -14,6 +14,11 @@ As the hardware used, a
 is hooked into a [Raspberry Pi v3](https://en.wikipedia.org/wiki/Raspberry_Pi),
 which acts as the computer for the software DAW.
 
+
+![counter demo](http://i.imgur.com/2ngaTE1h.gif)
+
+> As you can see, its in very early state 😅
+
 # Development Setup
 
 1. Install Raspbian Lite on the Raspberry Pi
