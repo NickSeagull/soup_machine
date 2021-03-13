@@ -9,9 +9,9 @@
 ############################################################
 
 # import ./soup_machinepkg/device_test as dt
-import ./soup_machinepkg/cabl
-import ./soup_machinepkg/elm/internal
-import ./soup_machinepkg/elm
+import ./soup_machinepkg/lib/cabl
+import ./soup_machinepkg/services/reactive_manager as ReactiveManager
+import ./soup_machinepkg/domain
 
 ############################################################
 #                                                          #
@@ -62,19 +62,28 @@ proc thisThreadYield*: void {.importcpp: "std::this_thread::yield()".}
 #                                                          #
 ############################################################
 proc nimInitDevice(device: DevicePtr): cint {.exportc.} =
-  runApp(device)
+  ReactiveManager.init(device)
 
 proc nimRender(): cint {.exportc.} =
   discard  # This is not used in the maschine mk1
 
 proc nimButtonChanged(device: DevicePtr, button: DeviceButton, buttonState: bool, shiftState: bool): cint {.exportc.} =
-  submitMessage(ButtonChanged(button, buttonState, shiftState))
+  ReactiveManager.submitMessage(ButtonChanged(button, buttonState, shiftState))
 
 proc nimEncoderChanged(device: DevicePtr, encoder: cint, valueIncreased: bool, shiftPressed: bool): cint {.exportc.} =
-  submitMessage(EncoderChanged(encoder, valueIncreased, shiftPressed))
+  ReactiveManager.submitMessage(EncoderChanged(encoder, valueIncreased, shiftPressed))
+
+var pressedKeys: set[uint8] = {}
 
 proc nimKeyChanged(device: DevicePtr, index: uint, value: cdouble, shiftPressed: bool): void {.exportc.} =
-  submitMessage(KeyChanged(index.int, value, shiftPressed))
+  if value <= 0:
+    pressedKeys.excl(index.uint8)
+    ReactiveManager.submitMessage(KeyReleased(index.int, shiftPressed))
+  if pressedKeys.contains(index.uint8):
+    ReactiveManager.submitMessage(KeyChanged(index.int, value, shiftPressed))
+  else:
+    pressedKeys.incl(index.uint8)
+    ReactiveManager.submitMessage(KeyPressed(index.int, value, shiftPressed))
 
 proc nimControlChanged(device: DevicePtr, pot: cint, value: cdouble, shiftPressed: bool): cint {.exportc.} =
   discard  # This is not used in the maschine mk1

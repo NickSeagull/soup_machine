@@ -15,7 +15,11 @@ const bytesPerSample = 2  # 16 bit PCM
 const nChannels = 1
 const bufferSizeInBytes = nChannels * bytesPerSample * bufferSizeInSamples
 
-proc playSound*(): void =
+type SoundService* = object
+  deviceId*: AudioDeviceID
+  hardwareSpec*: AudioSpec
+
+proc init*(): SoundService =
   # start up SDL2
   if sdl2.init(INIT_AUDIO) != SdlSuccess:
     quit "failed to init SDL2!"
@@ -61,6 +65,11 @@ proc playSound*(): void =
   # audio devices default to being paused, so turn off pause
   deviceId.pauseAudioDevice(0.cint)
 
+  return SoundService(deviceId: deviceId, hardwareSpec: hardwareSpec)
+
+
+
+proc playSound*(this: SoundService): void =
   # load in the wav file. wavFileSpec will be filled in with the wav
   # file's encoding.
   var
@@ -85,7 +94,7 @@ proc playSound*(): void =
 
   # create a new audio stream that will convert from the wav file's spec,
   # to the audio device's spec.
-  let stream = newAudioStream(wavFileSpec, hardwareSpec)
+  let stream = newAudioStream(wavFileSpec, this.hardwareSpec)
 
   # make sure to free the stream before we exit
   defer: stream.destroy()
@@ -103,7 +112,7 @@ proc playSound*(): void =
   echo "number of bytes at the stream's output: ", stream.available()
 
   # calculate the number of bytes in a single output sample.
-  let nBytesPerSample = hardwareSpec.channels * (SDL_AUDIO_BITSIZE(hardwareSpec.format.uint32) div 8).uint8
+  let nBytesPerSample = this.hardwareSpec.channels * (SDL_AUDIO_BITSIZE(this.hardwareSpec.format.uint32) div 8).uint8
 
   # make a buffer that's just one of those.
 
@@ -116,11 +125,11 @@ proc playSound*(): void =
   # add the stream's output to the audio device's queue, one sample at a time.
   var nread = stream.get(obuf, nBytesPerSample.cint)
   while nread > 0:
-    if deviceId.queueAudio(obuf, nread.uint32) < 0:
+    if this.deviceId.queueAudio(obuf, nread.uint32) < 0:
       echo $sdl2.getError()
       quit "failed to queue audio!"
     nread = stream.get(obuf, nBytesPerSample.cint)
 
   # sit in a while loop until the audio device's queue is empty
-  while deviceId.getQueuedAudioSize() > 0'u32:
+  while this.deviceId.getQueuedAudioSize() > 0'u32:
     discard
