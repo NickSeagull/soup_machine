@@ -1,6 +1,7 @@
 import ./domain
 import patty
 from strformat import fmt
+import math
 
 type Model* = object
   counter*: int
@@ -18,9 +19,17 @@ proc update*(message: Message, model: Model): (Model, Cmd) =
       var newModel = model
       newModel.counter += (encoder * increment * multiplier)
       (newModel, CmdNone())
-    KeyPressed(_, _, _):
+    KeyPressed(index, value, _):
       # (model, SetKeyLed(index, value))
-      (model, PlaySound())
+      (
+        model,
+        PlaySound(
+         round(440.0 * pow(1.059463, float64(3 + index - 12)), 2),
+         value.float64
+        )
+      )
+    KeyReleased(_, _):
+      (model, MuteSound())
     ButtonChanged(btn, on):
       (model, SetButtonLed(btn, on))
     _:

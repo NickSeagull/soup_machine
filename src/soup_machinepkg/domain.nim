@@ -15,5 +15,6 @@ variantp Message:
 variantp Cmd:
   SetButtonLed(sblButton: DeviceButton, on: bool)
   SetKeyLed(sklIndex: int, sklValue: float64)
-  PlaySound
+  PlaySound(freq: float64, volume: float64)
+  MuteSound
   CmdNone

@@ -12,6 +12,7 @@
 import ./soup_machinepkg/lib/cabl
 import ./soup_machinepkg/services/reactive_manager as ReactiveManager
 import ./soup_machinepkg/domain
+from strformat import fmt
 
 ############################################################
 #                                                          #
@@ -76,9 +77,10 @@ proc nimEncoderChanged(device: DevicePtr, encoder: cint, valueIncreased: bool, s
 var pressedKeys: set[uint8] = {}
 
 proc nimKeyChanged(device: DevicePtr, index: uint, value: cdouble, shiftPressed: bool): void {.exportc.} =
-  if value <= 0:
+  if value <= 0.1:
     pressedKeys.excl(index.uint8)
     ReactiveManager.submitMessage(KeyReleased(index.int, shiftPressed))
+    return
   if pressedKeys.contains(index.uint8):
     ReactiveManager.submitMessage(KeyChanged(index.int, value, shiftPressed))
   else:
