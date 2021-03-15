@@ -1,16 +1,21 @@
 import ../lib/cabl
-import ./sound as sound
 import options
+import nimosc as OSC
+
+const ip = "192.168.86.34"
+const port = 7771
+
+type Client* = typeof (newClient(ip, port))
 
 type IO* = object
   device*: DevicePtr
-  sound*: SoundService
+  osc*: Client
 
 var optionIO*: Option[IO] = none(IO)
 
 proc init*(devicePtr: DevicePtr): void =
-  let soundService = sound.init()
+  let oscClient = newClient(ip, port)
   optionIO = IO(
     device: devicePtr,
-    sound: soundService
+    osc: oscClient
   ).some

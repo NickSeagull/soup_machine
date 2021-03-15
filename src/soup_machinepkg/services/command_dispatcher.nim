@@ -1,11 +1,10 @@
 import options
 import patty
 import ./io
-import ./sound
 import ../lib/cabl
 import ../domain
 import os
-from strformat import fmt
+import nimosc
 
 var thread: Thread[void]
 var channel*: Channel[Cmd]
@@ -17,13 +16,8 @@ proc dispatch(io: IO, cmd: Cmd): void =
     SetKeyLed(index, value):
       io.device.setKeyLed(index, int(value * 0xff))
     PlaySound(freq, volume):
-      # io.sound.playSound()
-      let ip = "192.168.86.34"
-      let port = "7771"
-      # discard execShellCmd "oscsend {ip} {port} /noise/gate f 1"
-      # discard execShellCmd fmt"oscsend {ip} {port} /noise/gain f {$volume}"
-      # discard execShellCmd fmt"oscsend {ip} {port} /noise/freq f {$freq}"
-      discard execShellCmd fmt"oscsend {ip} {port} /ding"
+      let client = io.osc
+      client.send("/ding", freq.float32, volume.float32)
     MuteSound:
       discard execShellCmd "oscsend {ip} {port} /noise/gate f 0"
     CmdNone:

@@ -6,13 +6,14 @@ var thread: Thread[void]
 var models*: Channel[app.Model]
 var messages*: Channel[Message]
 
-proc foldp(updateFn: proc(event: Message, model: app.Model): (app.Model, Cmd), initial: app.Model): void =
+proc foldp(updateFn: proc(event: Message, model: app.Model): (app.Model, seq[Cmd]), initial: app.Model): void =
   models.send(initial)
   var model = initial
   var message = messages.recv()
   while true: # TODO: close channel to close loop
-    let (newModel, cmd) = updateFn(message, model)
-    submitCommand(cmd)
+    let (newModel, cmds) = updateFn(message, model)
+    for cmd in cmds:
+      submitCommand(cmd)
     models.send(newModel)
     model = newModel
     message = messages.recv()

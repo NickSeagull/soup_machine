@@ -12,7 +12,6 @@
 import ./soup_machinepkg/lib/cabl
 import ./soup_machinepkg/services/reactive_manager as ReactiveManager
 import ./soup_machinepkg/domain
-from strformat import fmt
 
 ############################################################
 #                                                          #
